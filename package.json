@@ -1,0 +1,53 @@
+{
+  "name": "schulte-table",
+  "version": "1.0.0",
+  "description": "A Schulte Table game. Used for development of speed reading, peripheral vision, attention and visual perception.",
+  "main": "",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MelvinVanBree/SchulteTable.git"
+  },
+  "keywords": [
+    "Game",
+    "Schulte",
+    "Table",
+    "Peripheral",
+    "Vision",
+    "Speed",
+    "Reading"
+  ],
+  "author": "Melvin van Bree",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MelvinVanBree/SchulteTable/issues"
+  },
+  "homepage": "https://github.com/MelvinVanBree/SchulteTable#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@types/pixi.js": "^5.0.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "path": "^0.12.7",
+    "pixi.js": "^5.2.1",
+    "sass-loader": "^8.0.2",
+    "script-loader": "^0.7.2",
+    "style-loader": "^1.1.3",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+  }
+}
