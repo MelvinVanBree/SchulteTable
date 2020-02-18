@@ -55,7 +55,7 @@ export class Grid extends PIXI.Container{
         return randomNums;
     }
 
-    public onCellClick(e: any){
+    public onCellClick(e: any):void{
         if(e.target.get() === gameHelper.currentGoal){
             gameHelper.currentGoal++;
         }
