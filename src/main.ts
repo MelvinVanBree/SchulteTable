@@ -5,6 +5,6 @@ import { core } from "Game/core";
 document.addEventListener('DOMContentLoaded', () => {
     let game = new core( document.getElementById('game')! );
 
-    game.init();
+    game.start();
 }, false);
 
