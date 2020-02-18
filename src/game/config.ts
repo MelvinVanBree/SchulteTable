@@ -5,9 +5,9 @@ export let Config = {
     },
     style: {
         backgroundColor: 0x363636,
-        buttonTextColor: 0xEEB21C,
-        buttonBorderColor: 0XEEB21C,
-        buttonBorderSize: 1,
-        buttonBackgroundColor: 0x0F1C31,
+        CellTextColor: 0xEEB21C,
+        CellBorderColor: 0XEEB21C,
+        CellBorderSize: 1,
+        CellBackgroundColor: 0x0F1C31,
     }
 };
