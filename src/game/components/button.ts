@@ -7,15 +7,14 @@ export class Button{
     private y: number;
     private width: number;
     private height: number;
-    private container: PIXI.Container;
+    public ref: PIXI.Graphics;
     
-    constructor(_content: number, _x: number, _y: number,_width: number, _height: number, _container: PIXI.Container){
+    constructor(_content: number, _x: number, _y: number,_width: number, _height: number){
         this.content = _content;
         this.x = _x;
         this.y = _y;
         this.height = _height;
         this.width = _width;
-        this.container = _container;
 
         let rect = new PIXI.Graphics();
         let buttonContent = new PIXI.Text(this.content.toString(),
@@ -33,7 +32,7 @@ export class Button{
         rect.drawRect(this.x, this.y, this.height, this.width)
         
         rect.addChild(buttonContent);
-        this.container.addChild(rect);
+        this.ref = rect;
     }
     
     

@@ -19,6 +19,9 @@ export class core {
 
         this.vh = this.renderer.view.height;
         this.vw = this.renderer.view.width;
+    }
+
+    public init() {
         this.drawGrid();
     }
 
@@ -40,22 +43,18 @@ export class core {
 
         for(let x=0; x < grid.getX(); x++){
             for(let y=0; y < grid.getY(); y++){
-                let num = random.pop();
-                grid.setElement(
-                    x,
-                    y,
-                    new Button(
-                        num!,
-                        x * (this.vw / grid.getX()),
-                        y * this.vh / grid.getY(),
-                        this.vh / grid.getY(),
-                        this.vw / grid.getX(),
-                        this.gameGrid
-                        )
-                    );
+                let button = new Button(
+                    random.pop()!,
+                    x * (this.vw / grid.getX()),
+                    y * this.vh / grid.getY(),
+                    this.vh / grid.getY(),
+                    this.vw / grid.getX()
+                    )
+                this.gameGrid.addChild(button.ref);
+                grid.setElement(x,y,button)
+
             }
         }
-
-        grid.logGrid();
+        grid.getElement(1,1);
     }
 }
