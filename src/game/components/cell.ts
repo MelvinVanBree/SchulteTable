@@ -2,9 +2,9 @@ import { Config } from "Game/config";
 import * as PIXI from 'pixi.js';
 
 export class Cell extends PIXI.Graphics{
-    private num: string;
+    private num: number;
     
-    constructor(_num: string, _x: number, _y: number, _w: number, _h: number){
+    constructor(_num: number, _x: number, _y: number, _w: number, _h: number, onClick: any){
         super();
         this.num = _num;
         this.x = _x;
@@ -17,13 +17,13 @@ export class Cell extends PIXI.Graphics{
 
         this.name = 'Cell ' + this.num;
         this.interactive = true;
+        this.on('mousedown', onClick);
 
         let CellContent = new PIXI.Text(this.num.toString(),
         {
             fontFamily : 'Arial',
             fontSize: 40,
-            fill : Config.style.CellTextColor,
-            align : 'center'
+            fill : Config.style.CellTextColor
         });
 
         CellContent.anchor.set(0.5, 0.5);
@@ -35,7 +35,7 @@ export class Cell extends PIXI.Graphics{
     /**
      * getNum
      */
-    public getNum() {
+    public get():number{
         return this.num;
     }
 }
