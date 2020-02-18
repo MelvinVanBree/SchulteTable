@@ -1,4 +1,4 @@
-export const Config = {
+export let Config = {
     dev: true,
     settings:{
         gridSize: { x: 5, y: 4},
