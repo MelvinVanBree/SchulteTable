@@ -4,7 +4,8 @@ import { Button, Grid } from "Game/components";
 
 export class core {
     private renderer: PIXI.Application;
-    private gameGrid: PIXI.Container;
+    private container: PIXI.Container;
+    private grid: Grid;
     private vh: number;
     private vw: number;
 
@@ -12,21 +13,25 @@ export class core {
         PIXI.settings.PRECISION_FRAGMENT = PIXI.PRECISION.HIGH;
 
         this.renderer = new PIXI.Application({ width: window.innerWidth, height: innerHeight, resizeTo: viewElement , backgroundColor: Config.style.backgroundColor });
-        this.gameGrid = new PIXI.Container();
+        this.container = new PIXI.Container();
+        this.grid = new Grid();
 
         viewElement.appendChild( this.renderer.view );
-        this.renderer.stage.addChild(this.gameGrid);
+        this.renderer.stage.addChild(this.container);
 
         this.vh = this.renderer.view.height;
         this.vw = this.renderer.view.width;
     }
 
     public init() {
+        this.populateGrid();
         this.drawGrid();
     }
 
     private randomArr():number[]{
+        //The amount of random numbers required (x.y)
         let n = Config.settings.gridSize.x * Config.settings.gridSize.y;
+
 
         let randomNums = Array.from({length: n}, (v, k) => k+1);
 
@@ -37,24 +42,35 @@ export class core {
         return randomNums;
     }
 
-    private drawGrid() {
-        let grid = new Grid();
+    private populateGrid() {
         let random = this.randomArr();
-
-        for(let x=0; x < grid.getX(); x++){
-            for(let y=0; y < grid.getY(); y++){
-                let button = new Button(
-                    random.pop()!,
-                    x * (this.vw / grid.getX()),
-                    y * this.vh / grid.getY(),
-                    this.vh / grid.getY(),
-                    this.vw / grid.getX()
+        // Classic Row(x) Column(y) loop
+        for(let x=0; x < this.grid.getX(); x++){
+            for(let y=0; y < this.grid.getY(); y++){
+                // Add buttons to this.grid
+                this.grid.addElement(
+                    new Button(
+                        //Get random number
+                        random.pop()!,
+                        // Classic 2D grid logic:
+                        // X, Y, Weight, Width
+                        x * (this.vw / this.grid.getX()),
+                        y * this.vh / this.grid.getY(),
+                        this.vh / this.grid.getY(),
+                        this.vw / this.grid.getX()
                     )
-                this.gameGrid.addChild(button.ref);
-                grid.setElement(x,y,button)
-
+                )
             }
         }
-        grid.getElement(1,1);
+
+
     }
+
+    private drawGrid() {
+        this.grid.get().forEach(button => {
+            this.container.addChild(button.ref);
+        });
+    }
+
+
 }

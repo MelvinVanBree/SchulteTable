@@ -4,32 +4,25 @@ import { Config } from "Game/config";
 export class Grid{
     private x: number;
     private y: number;
-    private matrix: any[][] = [];
+    private elements: Button[];
 
     constructor(){
         this.x = Config.settings.gridSize.x;
         this.y = Config.settings.gridSize.y;
-
-        /* initialize 2D array */
-        for(var i=0; i<this.x; i++) {
-            this.matrix[i] = [];
-            for(var j=0; j<this.y; j++) {
-                this.matrix[i][j] = '';
-            }
-        }
+        this.elements = [];
     }
 
 
-    public setElement(_x: number, _y: number, _button: Button){
-        this.matrix[_x][_y] = _button;
+    public addElement(_button: Button){
+        this.elements.push(_button);
     }
 
-    public getElement(_x: number, _y: number){
-        console.log(this.matrix[_x][_y]);
+    public get():Button[]{
+        return this.elements;
     }
 
-    public logGrid(){
-        console.log(this.matrix);
+    public getElement(x: number):Button{
+        return this.elements[x];
     }
 
     getX():number{
