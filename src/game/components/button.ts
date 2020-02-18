@@ -16,7 +16,7 @@ export class Button{
         this.height = _height;
         this.width = _width;
 
-        let rect = new PIXI.Graphics();
+        this.ref = new PIXI.Graphics();
         let buttonContent = new PIXI.Text(this.content.toString(),
         {
             fontFamily : 'Arial',
@@ -27,12 +27,11 @@ export class Button{
 
         buttonContent.anchor.set(0.5, 0.5);
         buttonContent.position.set(this.x + (this.height / 2), this.y + (this.width / 2));
-        rect.beginFill(Config.style.buttonBackgroundColor);
-        rect.lineStyle(Config.style.buttonBorderSize, Config.style.buttonBorderColor);
-        rect.drawRect(this.x, this.y, this.height, this.width)
+        this.ref.beginFill(Config.style.buttonBackgroundColor);
+        this.ref.lineStyle(Config.style.buttonBorderSize, Config.style.buttonBorderColor);
+        this.ref.drawRect(this.x, this.y, this.height, this.width)
         
-        rect.addChild(buttonContent);
-        this.ref = rect;
+        this.ref.addChild(buttonContent);
     }
     
     
